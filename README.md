@@ -1,1 +1,1 @@
-# go-gorilla-rest-api-unit-test
+# go-gorilla-rest-api-swagger-sample
