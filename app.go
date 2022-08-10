@@ -152,8 +152,13 @@ func (a *App) deleteArticle(w http.ResponseWriter, r *http.Request) {
     respondWithJSON(w, http.StatusOK, map[string]string{"result": "success"})
 }
 
+func (a *App) apiWelcome(w http.ResponseWriter, r *http.Request) {
+	 respondWithJSON(w, http.StatusOK,"Welcome To Go Gorilla Mux Rest API Sample")
+}
+
 
 func (a *App) initializeRoutes() {
+    a.Router.HandleFunc("/", a.apiWelcome).Methods("GET")
     a.Router.HandleFunc("/articles", a.getArticles).Methods("GET")
     a.Router.HandleFunc("/article", a.createArticle).Methods("POST")
     a.Router.HandleFunc("/article/{id:[0-9]+}", a.getArticle).Methods("GET")
