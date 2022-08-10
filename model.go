@@ -1,7 +1,6 @@
 package main
 
 import (
-    "fmt"
 	"log"
     "database/sql"
 )
@@ -13,8 +12,6 @@ type article struct {
 }
 
 func (p *article) getArticle(db *sql.DB) error {
-
-	fmt.Println(p.ID);
     return db.QueryRow("SELECT title, authors FROM articles WHERE id=?",
         p.ID).Scan(&p.Title, &p.Authors)
 }

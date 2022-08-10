@@ -15,11 +15,7 @@ import (
 var a App
 
 func TestMain(m *testing.M) {
-    a.Initialize(
-        os.Getenv("APP_DB_USERNAME"),
-        os.Getenv("APP_DB_PASSWORD"),
-        os.Getenv("APP_DB_NAME"))
-
+    a.Initialize("root","","127.0.0.1","3306","go-gorilla-rest-api-swagger")
     ensureTableExists()
     code := m.Run()
     clearTable()

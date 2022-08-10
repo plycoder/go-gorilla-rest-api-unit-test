@@ -2,7 +2,6 @@ package main
 
 import (
     "database/sql"
-    "fmt"
     "log"
 
     "net/http"
@@ -18,12 +17,8 @@ type App struct {
     DB     *sql.DB
 }
 
-func (a *App) Initialize(user, password, dbname string) {
-    //connectionString :=
-        fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable", user, password, dbname)
-		
-	connectionString :="root:@tcp(127.0.0.1:3306)/go-gorilla-rest-api-swagger"
-      
+func (a *App) Initialize(user, password, host, port, dbname string) {
+	connectionString :=user+":@tcp("+host+":"+port+")/"+dbname
     var err error
     a.DB, err = sql.Open("mysql", connectionString)
     if err != nil {
